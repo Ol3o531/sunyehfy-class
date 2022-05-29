@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            font-family: 'Segoe UI','Microsoft JhengHei',"Helvetica Neue",Helvetica,Arial,sans-serif;
+        }
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: #F06060;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #point,#test,#level{
+            border-radius: 10%;
+            font-size: 50px;
+            user-select: none;
+            text-align: center;
+            position: absolute;
+        }
+        #point{
+            top: 25%;
+            left: 3%;
+        }
+        #test{
+            top: 40%;
+            left: 5%;
+            background-color: #fff;
+        }
+        #level{
+            top: 0%;
+            left: 50%;
+            transform: translate(-50%);
+        }
+        #boxes{
+            width: 600px;
+            height: 600px;
+            background-color: #fff;
+            margin-top: 200px;
+            display: flex;
+            flex-wrap: wrap;
+            border-radius: 20px;
+            
+        }
+        .box{
+            border: 10px solid #fff;
+            border-radius: 20px;
+        }
+    </style>
+
+    <style>
+        nav{
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .time-area{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+            font-size: 30px;
+            letter-spacing: 3px;
+            background-color: #FFD36E;
+            left: 50%;
+            transform: translate(-50%);
+            top: 15%;
+        }
+        .timer-area div{
+            padding: 5px;
+        }
+        .start-btn{
+            left: 4.5%;
+            top:55%;
+        }
+        .start-btn,.time-area,.Stop-btn,.continue-btn{
+            position: absolute;
+        }
+        .continue-btn,.Stop-btn,.start-btn{
+            background-color: #FFF56D;
+            border-radius: 10px;
+            width: 120px;
+            height: 80px;
+            font-size: 40px;
+            font-weight: 500;
+        }
+        .Stop-btn{
+            left: 4.5%;
+            top:70%;
+        }
+        .continue-btn{
+            left: 4.5%;
+            top:70%;
+        }
+    </style>
+
+    <style>
+        .Mtext{
+            margin: 0 auto;
+            margin-top: 30%;
+            width: 500px;
+
+        }
+        .none{
+            display: none;
+        }
+        p{
+            margin-bottom: 10px;
+        }
+        .text{
+            margin-bottom: 50px;
+        }
+        p,.text{
+            font-size: 40px;
+            text-align: center;
+            color: #1E212D;
+        }
+    </style>
+</head>
+<body>
+    <section class="homepg">
+        <div class="Mtext">
+            <p>色彩識別度測驗</p>
+            <div class="text">(60秒內找出不同的色塊)</div>
+            <img src="https://pbs.twimg.com/media/DNvQag7WAAEXFfL?format=jpg&name=900x900" width="500px">
+        </div>
+        <button class="start-btn btn">Play</button>
+        <button class="continue-btn none">Cont.</button>
+
+
+    </section>
+
+
+
+
+
+
+    <section class="game none">
+        <div id="boxes"></div>
+            <div id="level">Level : 1</div>
+            <div id="point">Point : 0</div>
+            <div id="test">Cheat</div>
+            <div class="time-area">
+        Time : <div class="time"> 10 </div> S
+        </div>
+    <button class="Stop-btn btn">Pause</button>
+    </section>
+    
+
+
+
+    <script>
+        const homepage = document.querySelector('.homepg');
+        const Game = document.querySelector('.game');
+        const start_btn = document.querySelector('.start-btn');
+        const pause_btn = document.querySelector('.Stop-btn');
+        const cont_btn = document.querySelector('.continue-btn');
+        
+        let time = 10;//設定倒數的秒數
+        let timeSub = document.querySelector('.time');
+        let Timer;
+        
+        function countdown(){
+            clearInterval(Timer)
+            Timer = setInterval(function(){
+                if (time == 0){
+                    alert('Game Over'+"!"+"Point :" +" "+ p);
+                    time = 10;
+                    homepage.classList.remove('none');
+                    Game.classList.add('none');
+                    // clearInterval(Timer);
+                    parent.location.reload();
+                }else{
+                    time--;
+                    timeSub.innerHTML = time
+                }
+            },1000);
+            
+        }
+        start_btn.addEventListener('click',function(){
+            homepage.classList.add('none'); //hide home page
+            cont_btn.classList.add('none'); //hide Cont button
+            Game.classList.remove('none');//display Game page
+            time = 10;
+            timeSub.innerHTML = time;
+            start_btn.innerHTML = "Reset";
+            alert("You have 10s")
+            countdown();
+            game();
+        },)
+
+        //暫停按鈕
+        pause_btn.addEventListener('click',function(){
+            homepage.classList.remove('none'); //display home page
+            Game.classList.add('none');//hide game page
+            cont_btn.classList.remove('none'); //display cont button
+
+            clearInterval(Timer)
+        })
+
+
+
+        //continue button
+        cont_btn.addEventListener('click',function(){
+            homepage.classList.add('none'); //hide home page
+            Game.classList.remove('none');//display game page
+            countdown()
+        })
+    </script>
+
+    <script>
+        const c = 254;
+        let n = 2;//定義level的起始值
+        let p = 0;//定義point的起始值
+        let B_box = document.querySelector('#boxes');
+        // game()
+        function game(){
+            let size = 100/n ;//每一關的寬高定義
+            let color = `rgb(${Math.floor(Math.random()*c)},${Math.floor(Math.random()*c)},${Math.floor(Math.random()*c)})`
+            //顏色定義
+            B_box.innerHTML = "";//清空
+            for (let i = 0;i < n**2;i++) {
+                B_box.innerHTML += `<div class="box" style="width:${size}%;height:${size}%;background-color:${color};"></div>`
+            }
+            answer = Math.floor(Math.random()*n**2)+1;
+            let answerBox = document.querySelector(`#boxes .box:nth-child(${answer})`);
+            answerBox.style.opacity = `${0.5+n *0.01}`;
+            let NotanswerBox = document.querySelectorAll(`#boxes .box:not(:nth-child(${answer}))`);
+            console.log(NotanswerBox);
+
+
+            NotanswerBox.forEach(function(box){
+                box.addEventListener('click',function(){
+                    alert('wrong');
+                })
+            })
+
+            let T = document.querySelector('#test')
+            T.addEventListener('click',function(){
+                answerBox.style.opacity = .1;
+            })
+
+            answerBox.addEventListener('click',function(){
+                let oscore = document.querySelector("#point");
+                let olevel = document.querySelector("#level");
+                p++;//p = point
+                if (p%4 === 0) {
+                    n++;
+                }
+                oscore.innerHTML = "Point :" +" "+ p;
+                olevel.innerHTML = "Level :" +" "+ n ;
+                
+                game();
+            })
+        }
+    </script>
+
+
+</body>
+</html>
