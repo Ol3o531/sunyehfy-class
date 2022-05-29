@@ -1,0 +1,429 @@
+$font-family_1: 'Segoe UI','Microsoft JhengHei',"Helvetica Neue",Helvetica,Arial,sans-serif;
+$background-color_1: #fff;
+$background-color_2: black;
+$background-color_3: #f2f2f2;
+$background-color_4: #e6e6e6;
+
+/* 放Logo */
+/* 放Logo */
+/* 網站menu */
+/* 網站menu */
+/* --------------------------- */
+/* --------------------------- */
+/* 漢堡條跟Microsoft更多共用menu */
+/* --------------------------- */
+/* burger選單內的字體調整 */
+/* burger選單內的字體調整 */
+/* --------------------------- */
+/* 漢堡條跟Microsoft更多共用menu */
+/* 變版後會消失的Li class */
+/* 變版後會消失的Li class */
+/* 變版前不會出現的Li calss */
+/* 更多下拉選單的check */
+/* 更多下拉選單的check */
+/* 變版前不會出現的Li calss */
+* {
+	box-sizing: border-box;
+	font-family: $font-family_1;
+	user-select: none;
+}
+body {
+	margin: 0px;
+	padding: 0px;
+	background-color: $background-color_1;
+	overflow-x: hidden;
+}
+ul {
+	margin: 0px;
+	padding: 0px;
+}
+li {
+	margin: 0px;
+	padding: 0px;
+}
+.head {
+	width: 100%;
+	height: 50px;
+	display: flex;
+	padding: 0 5%;
+}
+.container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	position: relative;
+}
+.nav-map1 {
+	height: 100%;
+}
+.nav-map2 {
+	height: 100%;
+}
+.nav-bar1 {
+	width: 108px;
+	height: 100%;
+	margin-right: 30px;
+	display: flex;
+	align-items: center;
+}
+.head-logo {
+	width: 108px;
+	height: 23px;
+	background-image: url(../img/nav1.png);
+	background-position: center;
+	background-size: cover;
+}
+.nav-bar2 {
+	width: 90%;
+	height: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+#nav-ul {
+	display: flex;
+	position: relative;
+}
+#nav-map1 {
+	display: block;
+	line-height: 50px;
+	font-size: 13px;
+	margin-right: 20px;
+	z-index: 2;
+}
+.more-menu {
+	display: none;
+}
+#more-menu {
+	&:checked {
+		~ {
+			.more-menu {
+				display: block;
+			}
+		}
+	}
+}
+input {
+	display: none;
+}
+.underline {
+	&::before {
+		content: "";
+		position: absolute;
+		bottom: 15px;
+		left: 0px;
+		width: 100%;
+		height: 2px;
+		background-color: $background-color_2;
+		opacity: 0;
+		transition: .5ms;
+	}
+	position: relative;
+	&:hover {
+		&::before {
+			opacity: 1;
+		}
+	}
+}
+.underline2 {
+	&::before {
+		content: "";
+		position: absolute;
+		bottom: 10px;
+		left: 0;
+		width: 0;
+		height: 2px;
+		background-color: $background-color_2;
+		opacity: 0;
+		transition: .5ms;
+	}
+	&:hover {
+		&::before {
+			opacity: 1;
+		}
+	}
+}
+#burger-bye {
+	display: none;
+}
+.hamburger {
+	width: calc(100% / 6);
+	flex-direction: column;
+	padding-left: 20px;
+	&:nth-child(8) {
+		flex-grow: 1;
+		text-align: center;
+		background-color: $background-color_4;
+		border-bottom: 2px solid black;
+		>.hamburgr-li {
+			background-color: $background-color_4;
+		}
+	}
+}
+.nav-menu {
+	z-index: 2;
+	position: absolute;
+	width: 100%;
+	top: 100%;
+	left: 10%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	background-color: $background-color_3;
+	display: none;
+}
+.hamburger-li {
+	display: block;
+	font-size: 13px;
+	margin-bottom: 20px;
+	&:nth-child(1) {
+		font-size: 15px;
+		font-weight: 600;
+		margin-top: 10px;
+	}
+}
+#down-icon {
+	display: none;
+}
+.nav-bye {
+	display: block;
+	line-height: 50px;
+	font-size: 13px;
+	margin-right: 20px;
+}
+#nav-surface {
+	display: none;
+}
+#nav-more {
+	display: none;
+	z-index: 2;
+}
+#nav-icon {
+	display: none;
+}
+#nav-hamburger {
+	display: none;
+}
+#hamburger {
+	&:checked {
+		~ {
+			.nav-menu {
+				display: flex;
+			}
+		}
+	}
+}
+#burger-top {
+	display: none;
+}
+@media (max-width:1500px) {
+	#nav-text {
+		display: none;
+	}
+	#nav-icon {
+		display: block;
+	}
+}
+@media (max-width:1300px) {
+	.hamburger {
+		width: calc(100% / 5);
+	}
+	.nav-menu {
+		>ul {
+			&:nth-child(7) {
+				width: 100%;
+			}
+		}
+	}
+}
+@media (max-width:1100px) {
+	.hamburger {
+		width: calc(100% / 4);
+	}
+	.nav-menu {
+		>ul {
+			&:nth-child(6) {
+				width: 25%;
+			}
+			&:nth-child(7) {
+				width: 75%;
+			}
+		}
+	}
+}
+@media (max-width:900px) {
+	.hamburger {
+		width: calc(100% / 4);
+	}
+	#nav-Support {
+		display: none;
+	}
+	#nav-Xbox {
+		display: none;
+	}
+	#nav-more {
+		display: block;
+	}
+	.hamburger-li {
+		&:not(:first-child) {
+			margin-left: 30px;
+			margin-bottom: 20px;
+			border-bottom: 1px solid #e6e6e6;
+		}
+	}
+}
+@media (max-width:880px) {
+	.burger-label {
+		margin-left: 20px;
+	}
+	#nav-SF {
+		display: none;
+	}
+	#nav-surface {
+		display: block;
+	}
+	.nav-menu {
+		>ul {
+			padding-left: 20px;
+			&:nth-child(6) {
+				width: 100%;
+			}
+			&:nth-child(7) {
+				width: 100%;
+			}
+		}
+		left: 0%;
+	}
+	.hamburger {
+		width: 100%;
+		border-top: 1px solid #e6e6e6;
+		&:nth-child(8) {
+			background-color: $background-color_3;
+			border-bottom: 1px solid black;
+		}
+	}
+	.hamburger-li {
+		&:not(:first-child) {
+			display: none;
+		}
+	}
+	#burger1 {
+		&:checked {
+			~ {
+				.hamburger-li {
+					display: flex;
+				}
+			}
+		}
+	}
+	#burger2 {
+		&:checked {
+			~ {
+				.hamburger-li {
+					display: flex;
+				}
+			}
+		}
+	}
+	#burger3 {
+		&:checked {
+			~ {
+				.hamburger-li {
+					display: flex;
+				}
+			}
+		}
+	}
+	#burger4 {
+		&:checked {
+			~ {
+				.hamburger-li {
+					display: flex;
+				}
+			}
+		}
+	}
+	#burger5 {
+		&:checked {
+			~ {
+				.hamburger-li {
+					display: flex;
+				}
+			}
+		}
+	}
+	#burger6 {
+		&:checked {
+			~ {
+				.hamburger-li {
+					display: flex;
+				}
+			}
+		}
+	}
+	#burger-top {
+		display: block;
+		width: 100%;
+		margin-bottom: 0px;
+		margin-top: 0px;
+		margin-left: -40px;
+	}
+	.burger-topli {
+		border-top: 1px solid #e6e6e6;
+		display: block;
+		font-size: 15px;
+		font-weight: 600;
+		padding-top: 10px;
+		padding-bottom: 20px;
+		padding-left: 20px;
+	}
+	.down-icon {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+	}
+	#down-icon {
+		display: block;
+		margin-right: 20px;
+	}
+}
+@media (max-width:860px) {
+	.head {
+		padding: 0px 0px;
+	}
+	#burger-bye {
+		display: inline-block;
+	}
+	.burger-label {
+		width: 25px;
+		margin-right: 20px;
+	}
+	.nav-map1 {
+		>#nav-ul {
+			display: none;
+		}
+	}
+	.nav-bar1 {
+		position: absolute;
+		left: 50%;
+		transform: translate(-50%);
+	}
+	.nav-bar2 {
+		width: 100%;
+	}
+	#nav-allmicrosoft {
+		display: none;
+	}
+	#nav-hamburger {
+		display: block;
+	}
+	.nav-ul {
+		width: 100%;
+	}
+	.nav-map2 {
+		width: 100%;
+	}
+	.icon-serch {
+		margin-right: auto;
+	}
+}
